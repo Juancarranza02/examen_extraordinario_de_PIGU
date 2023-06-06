@@ -4,10 +4,15 @@
  */
 package main;
 
+import vista.principal;
+
+
 public class MetodoMain {
     
     public static void main(String[] args) {
-        author63841();
+        //author63841();
+        principal mn = new principal();
+        mn.setVisible(true);
     }
     
     public static void  author63841() {
