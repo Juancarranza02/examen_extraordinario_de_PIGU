@@ -4,6 +4,7 @@
  */
 package vista;
 
+import Controller.ControladorFrameExportar;
 import Controller.ControladorPrincipal;
 
 
@@ -15,6 +16,7 @@ public class principal extends javax.swing.JFrame {
     public principal() {
         initComponents();
         ControladorPrincipal pr = new ControladorPrincipal(this);
+        ControladorFrameExportar ce = new ControladorFrameExportar(this);
     }
 
     /**
@@ -26,6 +28,15 @@ public class principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Exportar = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
+        txt_nombreArchivo = new javax.swing.JTextField();
+        btn_GuardarArchivo = new javax.swing.JButton();
+        btn_BuscarArchivos = new javax.swing.JButton();
+        btn_elinarArchivo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txt_Nombre = new javax.swing.JTextField();
@@ -40,6 +51,45 @@ public class principal extends javax.swing.JFrame {
         tblElementos = new javax.swing.JTable();
         txt_recNo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        btn_cancelar = new javax.swing.JButton();
+        btn_Eliminar = new javax.swing.JButton();
+        btn_Exportar = new javax.swing.JButton();
+        btn_Actualizar = new javax.swing.JButton();
+        ilbd = new javax.swing.JLabel();
+
+        Exportar.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        jScrollPane2.setViewportView(textArea);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 620, 330));
+
+        jLabel6.setText("Nombre del Archivo: ");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 120, 30));
+        jPanel2.add(txt_nombreArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 410, 40));
+
+        btn_GuardarArchivo.setText("Guardar");
+        jPanel2.add(btn_GuardarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 120, 40));
+
+        btn_BuscarArchivos.setText("Buscar Archivo");
+        jPanel2.add(btn_BuscarArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 190, 40));
+
+        btn_elinarArchivo.setText("Eliminar");
+        jPanel2.add(btn_elinarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 120, 40));
+
+        javax.swing.GroupLayout ExportarLayout = new javax.swing.GroupLayout(Exportar.getContentPane());
+        Exportar.getContentPane().setLayout(ExportarLayout);
+        ExportarLayout.setHorizontalGroup(
+            ExportarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 751, Short.MAX_VALUE)
+        );
+        ExportarLayout.setVerticalGroup(
+            ExportarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,14 +125,23 @@ public class principal extends javax.swing.JFrame {
 
         jLabel3.setText("recNo:");
 
+        btn_cancelar.setText("Cancelar");
+
+        btn_Eliminar.setText("Eliminar");
+
+        btn_Exportar.setText("Exportar ");
+        btn_Exportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ExportarActionPerformed(evt);
+            }
+        });
+
+        btn_Actualizar.setText("Actualizar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 940, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -91,7 +150,9 @@ public class principal extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(txt_recNo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(268, 268, 268)
+                        .addGap(80, 80, 80)
+                        .addComponent(ilbd, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
@@ -110,8 +171,21 @@ public class principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_MostrarDatos))
+                    .addComponent(btn_MostrarDatos)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_cancelar)
+                        .addGap(9, 9, 9)
+                        .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(btn_Exportar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(btn_Actualizar)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 940, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,37 +195,55 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txt_recNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel1)
+                                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel2)
+                                            .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btn_Aceptar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btn_MostrarDatos)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(txt_milesk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ilbd, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel7))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_UA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_Aceptar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_MostrarDatos)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_cancelar)
+                            .addComponent(btn_Eliminar)
+                            .addComponent(btn_Exportar))
+                        .addGap(15, 15, 15)
+                        .addComponent(btn_Actualizar)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(txt_milesk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel7))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_UA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_ExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExportarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ExportarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,19 +282,33 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JFrame Exportar;
     public javax.swing.JButton btn_Aceptar;
+    public javax.swing.JButton btn_Actualizar;
+    public javax.swing.JButton btn_BuscarArchivos;
+    public javax.swing.JButton btn_Eliminar;
+    public javax.swing.JButton btn_Exportar;
+    public javax.swing.JButton btn_GuardarArchivo;
     public javax.swing.JButton btn_MostrarDatos;
+    public javax.swing.JButton btn_cancelar;
+    public javax.swing.JButton btn_elinarArchivo;
+    public javax.swing.JLabel ilbd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable tblElementos;
+    public javax.swing.JTextArea textArea;
     public javax.swing.JTextField txt_Nombre;
     public javax.swing.JTextField txt_UA;
     public javax.swing.JTextField txt_id;
     public javax.swing.JTextField txt_milesk;
+    public javax.swing.JTextField txt_nombreArchivo;
     public javax.swing.JTextField txt_recNo;
     // End of variables declaration//GEN-END:variables
 }
